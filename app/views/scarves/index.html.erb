@@ -9,6 +9,7 @@
       <th>Description</th>
       <th>City insp</th>
       <th>Date insp</th>
+      <th>Weather insp</th>
       <th>Pattern</th>
       <th colspan="3"></th>
     </tr>
@@ -19,9 +20,10 @@
       <tr>
         <td><%= scarf.title %></td>
         <td><%= scarf.description %></td>
-        <td><%= scarf.city_insp %></td>
+        <td><%= scarf.city.city_name %></td>
         <td><%= scarf.date_insp %></td>
-        <td><%= scarf.pattern %></td>
+        <td><%= scarf.weather_insp %></td>
+        <td><%= scarf.pattern%></td>
         <td><%= link_to 'Show', scarf %></td>
         <td><%= link_to 'Edit', edit_scarf_path(scarf) %></td>
         <td><%= link_to 'Destroy', scarf, method: :delete, data: { confirm: 'Are you sure?' } %></td>

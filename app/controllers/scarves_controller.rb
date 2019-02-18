@@ -26,6 +26,22 @@ class ScarvesController < ApplicationController
   def create
     @scarf = Scarf.new(scarf_params)
 
+    unixtime = @scarf.date_insp.to_time.to_i
+    glat = @scarf.city.lat
+    glng = @scarf.city.lng
+
+    response = HTTParty.get("https://api.darksky.net/forecast/#{ENV['DARK_SKY_SECRET']}/#{glat},#{glng},#{unixtime}?exclude=currently,flags")
+
+    rawpattern = []
+
+    #parse resonse to make pattern
+    response['hourly']['data'].each do |hour|\
+      str = scarf_params['weather_insp']
+      rawpattern << hour["#{str}"]
+    end
+
+    @scarf.pattern = rawpattern
+
     respond_to do |format|
       if @scarf.save
         format.html { redirect_to @scarf, notice: 'Scarf was successfully created.' }
@@ -35,6 +51,8 @@ class ScarvesController < ApplicationController
         format.json { render json: @scarf.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # PATCH/PUT /scarves/1
@@ -69,6 +87,6 @@ class ScarvesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scarf_params
-      params.require(:scarf).permit(:title, :description, :city_insp, :date_insp, :pattern)
+      params.require(:scarf).permit(:title, :description, :city_id, :date_insp, :weather_insp)
     end
 end

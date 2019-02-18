@@ -3,7 +3,7 @@ class CreateScarves < ActiveRecord::Migration[5.2]
     create_table :scarves do |t|
       t.string :title
       t.string :description
-      t.string :city_insp
+      t.integer :city_id
       t.datetime :date_insp
 
       t.timestamps

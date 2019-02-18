@@ -22,19 +22,21 @@
   </div>
 
   <div class="field">
-    <%= form.label :city_insp %>
-    <%= form.text_field :city_insp %>
+    <%= form.label :city_id %>
+    <%= form.select(:city_id, options_from_collection_for_select(City.all, :id, :city_name)) %>
   </div>
+
 
   <div class="field">
     <%= form.label :date_insp %>
-    <%= form.datetime_select :date_insp %>
+    <%= form.date_select :date_insp %>
   </div>
 
   <div class="field">
-    <%= form.label :pattern %>
-    <%= form.text_area :pattern %>
+    <%= form.label :weather_insp %>
+    <%= form.select(:weather_insp, options_for_select([['Temperature', 'temperature'], ['Humidity', 'humidity'], ['Dew Point', 'dewPoint'], ['Apparent Temperature','apparentTemperature'], ['Wind Speed', 'windSpeed'], ['Cloud Cover', 'cloudCover'], ['Visibility', 'visibility'], ['Summary', 'summary']])) %>
   </div>
+
 
   <div class="actions">
     <%= form.submit %>
