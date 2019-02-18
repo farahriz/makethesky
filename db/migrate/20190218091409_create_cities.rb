@@ -8,7 +8,7 @@ class CreateCities < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_column :cities, :lat, :decimal, precision: 7, scale: 4
-    add_column :cities, :lng, :decimal, precision: 7, scale: 4
+    add_column :cities, :lat, :float
+    add_column :cities, :lng, :float
   end
 end
