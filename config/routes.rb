@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'patterns/request'
-  get 'patterns/result'
+  get 'patterns/new'
+  get 'patterns/show'
 
   resources :scarves
   root "landing#index"

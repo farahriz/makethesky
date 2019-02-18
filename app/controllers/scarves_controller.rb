@@ -25,6 +25,22 @@ class ScarvesController < ApplicationController
   # POST /scarves.json
   def create
     @scarf = Scarf.new(scarf_params)
+    @city = City.find_by(city_name: "#{@scarf.city_insp}")
+
+    unixtime = @scarf.date_insp.to_time.to_i
+    glat = @city.lat
+    glng = @city.lng
+
+    response = HTTParty.get("https://api.darksky.net/forecast/#{ENV['DARK_SKY_SECRET']}/#{glat},#{glng},#{unixtime}?exclude=currently,flags")
+
+    gpattern = []
+
+    #parse resonse to make pattern
+    response['hourly']['data'].each do |hour|
+      gpattern << hour['temperature']
+    end
+
+    @scarf.pattern = gpattern
 
     respond_to do |format|
       if @scarf.save
@@ -71,6 +87,6 @@ class ScarvesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scarf_params
-      params.require(:scarf).permit(:title, :description, :city_insp, :date_insp)
+      params.require(:scarf).permit(:title, :description, :city_insp, :date_insp, :weather_insp)
     end
 end

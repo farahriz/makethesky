@@ -1,0 +1,11 @@
+<%= form_tag(patterns_show_path, :method => "get") do %>
+  <div class="field">
+    <%= label_tag(:date, "The weather on this day:") %>
+    <%= select_date %>
+  </div>
+
+  <div>
+  	<%= submit_tag("Make a pattern")%>
+  </div>
+
+<% end %>

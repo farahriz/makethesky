@@ -28,12 +28,12 @@
 
   <div class="field">
     <%= form.label :date_insp %>
-    <%= form.datetime_select :date_insp %>
+    <%= form.date_select :date_insp %>
   </div>
 
   <div class="field">
-    <%= form.label :pattern %>
-    <%= form.text_area :pattern %>
+    <%= form.label :weather_insp %>
+    <%= select_tag(:weather_insp, options_for_select([['Temperature', 'temperature'], ['Humidity', 'humidity']])) %>
   </div>
 
   <div class="actions">
