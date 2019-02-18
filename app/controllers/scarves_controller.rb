@@ -69,6 +69,6 @@ class ScarvesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scarf_params
-      params.require(:scarf).permit(:title, :description, :city_insp, :date_insp, :pattern)
+      params.require(:scarf).permit(:title, :description, :city_insp, :date_insp)
     end
 end

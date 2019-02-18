@@ -6,6 +6,7 @@ ruby '2.5.3'
 
 # Privacy
 gem 'figaro'
+gem 'bcrypt'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
