@@ -33,14 +33,15 @@ class ScarvesController < ApplicationController
 
     response = HTTParty.get("https://api.darksky.net/forecast/#{ENV['DARK_SKY_SECRET']}/#{glat},#{glng},#{unixtime}?exclude=currently,flags")
 
-    gpattern = []
+    rawpattern = []
 
     #parse resonse to make pattern
-    response['hourly']['data'].each do |hour|
-      gpattern << hour['temperature']
+    response['hourly']['data'].each do |hour|\
+      str = scarf_params['weather_insp']
+      gpattern << hour["#{str}"]
     end
 
-    @scarf.pattern = gpattern
+    @scarf.pattern = rawpattern
 
     respond_to do |format|
       if @scarf.save

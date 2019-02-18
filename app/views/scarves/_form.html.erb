@@ -26,6 +26,7 @@
     <%= form.text_field :city_insp %>
   </div>
 
+
   <div class="field">
     <%= form.label :date_insp %>
     <%= form.date_select :date_insp %>
@@ -33,8 +34,9 @@
 
   <div class="field">
     <%= form.label :weather_insp %>
-    <%= select_tag(:weather_insp, options_for_select([['Temperature', 'temperature'], ['Humidity', 'humidity']])) %>
+    <%= form.select(:weather_insp, options_for_select([['Temperature', 'temperature'], ['Humidity', 'humidity'], ['Dew Point', 'dewPoint'], ['Apparent Temperature','apparentTemperature'], ['Wind Speed', 'windSpeed'], ['Cloud Cover', 'cloudCover'], ['Visibility', 'visibility'], ['Summary', 'summary']])) %>
   </div>
+
 
   <div class="actions">
     <%= form.submit %>
