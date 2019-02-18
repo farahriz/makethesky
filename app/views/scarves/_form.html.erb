@@ -22,8 +22,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :city_insp %>
-    <%= form.collection_select(:city, :city_insp, City.all, :id, :city_name) %>
+    <%= form.label :city_id %>
+    <%= form.select(:city_id, options_from_collection_for_select(City.all, :id, :city_name)) %>
   </div>
 
 
