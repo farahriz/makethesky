@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :city_insp %>
-    <%= form.text_field :city_insp %>
+    <%= form.collection_select(:city, :city_insp, City.all, :id, :city_name) %>
   </div>
 
 
