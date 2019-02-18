@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'pattern/request'
+  get 'pattern/result'
   resources :scarves
   root "landing#index"
 

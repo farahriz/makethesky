@@ -35,6 +35,8 @@ class ScarvesController < ApplicationController
         format.json { render json: @scarf.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # PATCH/PUT /scarves/1
