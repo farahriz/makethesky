@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'patterns/request'
+  get 'patterns/result'
   get 'pattern/request'
   get 'pattern/result'
   resources :scarves
