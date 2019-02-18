@@ -1,0 +1,42 @@
+<%= form_with(model: scarf, local: true) do |form| %>
+  <% if scarf.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(scarf.errors.count, "error") %> prohibited this scarf from being saved:</h2>
+
+      <ul>
+      <% scarf.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city_insp %>
+    <%= form.text_field :city_insp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_insp %>
+    <%= form.datetime_select :date_insp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pattern %>
+    <%= form.text_area :pattern %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

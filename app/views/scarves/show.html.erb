@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @scarf.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @scarf.description %>
+</p>
+
+<p>
+  <strong>City insp:</strong>
+  <%= @scarf.city_insp %>
+</p>
+
+<p>
+  <strong>Date insp:</strong>
+  <%= @scarf.date_insp %>
+</p>
+
+<p>
+  <strong>Pattern:</strong>
+  <%= @scarf.pattern %>
+</p>
+
+<%= link_to 'Edit', edit_scarf_path(@scarf) %> |
+<%= link_to 'Back', scarves_path %>
