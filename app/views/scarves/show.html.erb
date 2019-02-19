@@ -39,9 +39,7 @@
   var canvas = document.getElementById('scarfCanvas');
   var canvasContext = canvas.getContext('2d');
 
-  // obtain pattern array as a string
-  let refPat = $('#refPat').html()
-  let referenceArray = refPat.slice(1,-1).replace(/"/g, "").split(',')
+  let referenceArray = $('#refPat').html().slice(1,-1).replace(/"/g, "").split(',')
 
   // let referenceArray = ["20.66", "18.31", "19.71", "23.06", "23.12", "18.43", "24.46", "21.06", "19.76", "25.68", "23.69", "22.2", "21.95", "20.3", "23.57", "22.36", "21.15", "21.09", "22.18", "18.46", "19.74", "17.35", "15.23", "16.36"]
   let highRef = Math.max(...referenceArray);
