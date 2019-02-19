@@ -30,5 +30,28 @@
   <%= @scarf.pattern %>
 </p>
 
+  <div>
+    <canvas id="scarfCanvas" width="720" height="200"></canvas>
+  </div>
+
+
+<script>
+  var canvas = document.getElementById('scarfCanvas');
+  var canvasContext = canvas.getContext('2d');
+
+  function colorRect(leftX, topY, width, height, drawColor){
+    canvasContext.fillStyle = drawColor;
+    canvasContext.fillRect(leftX, topY, width, height);
+  }
+
+  for (var i = 0 ; i < 24; i++) {
+    if(i % 2 == 0){
+      colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, 'blue')
+    }
+  }
+
+
+</script>
+
 <%= link_to 'Edit', edit_scarf_path(@scarf) %> |
 <%= link_to 'Back', scarves_path %>
