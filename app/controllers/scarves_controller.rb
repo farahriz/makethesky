@@ -20,6 +20,9 @@ class ScarvesController < ApplicationController
 
   # GET /scarves/1/edit
   def edit
+    if not_allowed?
+      return redirect_to scarf_path(@scarf), notice: "Sorry. You do not have the permission to edit a scarf that you didn't make yourself."
+    end
   end
 
   # POST /scarves
@@ -89,11 +92,17 @@ class ScarvesController < ApplicationController
   # DELETE /scarves/1
   # DELETE /scarves/1.json
   def destroy
-    @scarf.destroy
-    respond_to do |format|
-      format.html { redirect_to scarves_url, notice: 'Scarf was successfully destroyed.' }
-      format.json { head :no_content }
+    if not_allowed?
+      return redirect_to scarf_path(@scarf), notice: "Sorry. You do not have the permission to delete a scarf that you didn't make yourself."      
+    else
+      @scarf.destroy
+      respond_to do |format|
+        format.html { redirect_to scarves_url, notice: 'Scarf was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
+
+
   end
 
   private
@@ -106,4 +115,9 @@ class ScarvesController < ApplicationController
     def scarf_params
       params.require(:scarf).permit(:title, :description, :city_id, :date_insp, :weather_insp)
     end
+
+    def not_allowed?
+      current_user == nil or !(@scarf.user == current_user)
+    end
+
 end
