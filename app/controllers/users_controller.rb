@@ -71,4 +71,13 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation)
     end
+
+    def signed_in?
+      if session[:user_id] = nil
+        return false
+      else 
+        return true
+      end
+    end
+
 end
