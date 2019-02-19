@@ -28,16 +28,21 @@
 <p>
   <strong>Pattern:</strong>
   <%= @scarf.pattern %>
+
+  <%= content_tag 'div', id: 'refpat', data: {refpat: @scarf.pattern} do %>
+  <%end%>
 </p>
 
   <div>
-    <canvas id="scarfCanvas" width="720" height="200"></canvas>
+    <canvas id="scarfCanvas" width="720" height="120"></canvas>
   </div>
 
 
 <script>
   var canvas = document.getElementById('scarfCanvas');
   var canvasContext = canvas.getContext('2d');
+
+  console.log(document.getElementById('refpat').data(refpat));
 
   function colorRect(leftX, topY, width, height, drawColor){
     canvasContext.fillStyle = drawColor;
@@ -47,9 +52,10 @@
   for (var i = 0 ; i < 24; i++) {
     if(i % 2 == 0){
       colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, 'blue')
+    } else {
+      colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, 'red')
     }
   }
-
 
 </script>
 
