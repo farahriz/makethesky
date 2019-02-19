@@ -11,8 +11,6 @@ class ScarvesController < ApplicationController
   # GET /scarves/1.json
   def show
 
-    # render json: @scarf.pattern
-
   end
 
   # GET /scarves/new
