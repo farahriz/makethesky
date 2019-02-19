@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_19_074303) do
+ActiveRecord::Schema.define(version: 2019_02_19_113737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_074303) do
     t.datetime "updated_at", null: false
     t.text "pattern", default: [], array: true
     t.string "weather_insp"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,4 +46,5 @@ ActiveRecord::Schema.define(version: 2019_02_19_074303) do
   end
 
   add_foreign_key "scarves", "cities"
+  add_foreign_key "scarves", "users"
 end
