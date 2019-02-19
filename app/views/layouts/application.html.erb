@@ -29,10 +29,12 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="/scarves">View latest scarves</a>
-          </li>          
+          </li>
+          <% if !current_user == nil %>          
           <li class="nav-item">
             <a class="nav-link" href="/myscarves">My scarves</a>
           </li>
+          <% end %>
           <li class="nav-item">
             <a class="nav-link" href="/scarves/new">Make a scarf</a>
           </li>
@@ -47,6 +49,9 @@
               <a class="nav-link" href="/logout">Log out</a>
           <% end %>
           </li>
+          <li>
+            <div id=”notice”><%= notice %></p>
+          </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -58,7 +63,7 @@
   <!-- END OF NAV BAR -->
 
   <body>
-    <p id=”notice”><%= notice %></p>
+    
 
     <%= yield %>
 
