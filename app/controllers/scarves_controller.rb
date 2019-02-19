@@ -10,6 +10,7 @@ class ScarvesController < ApplicationController
   # GET /scarves/1
   # GET /scarves/1.json
   def show
+
   end
 
   # GET /scarves/new
