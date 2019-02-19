@@ -27,7 +27,7 @@
 
 <p>
   <strong>Pattern:</strong>
-  <%= @scarf.pattern %>
+  <span id="refPat"><%= @scarf.pattern %></span>
 </p>
 
   <div>
@@ -39,15 +39,17 @@
   var canvas = document.getElementById('scarfCanvas');
   var canvasContext = canvas.getContext('2d');
 
-  let referenceArray = ["20.66", "18.31", "19.71", "23.06", "23.12", "18.43", "24.46", "21.06", "19.76", "25.68", "23.69", "22.2", "21.95", "20.3", "23.57", "22.36", "21.15", "21.09", "22.18", "18.46", "19.74", "17.35", "15.23", "16.36"]
+  // obtain pattern array as a string
+  let refPat = $('#refPat').html()
+  let referenceArray = refPat.slice(1,-1).replace(/"/g, "").split(',')
+
+  // let referenceArray = ["20.66", "18.31", "19.71", "23.06", "23.12", "18.43", "24.46", "21.06", "19.76", "25.68", "23.69", "22.2", "21.95", "20.3", "23.57", "22.36", "21.15", "21.09", "22.18", "18.46", "19.74", "17.35", "15.23", "16.36"]
   let highRef = Math.max(...referenceArray);
   let lowRef = Math.min(...referenceArray);
   let range = highRef - lowRef
   let patternMatch = [lowRef, lowRef + range/5, lowRef + 2*range/5, lowRef + 3*range/5, highRef]
 
   let colorPallete = ['#29339B', '#74A4BC', '#B6D6CC', '#F1FEC6', '#FF3A20']
-
-  console.log(referenceArray)
 
   function colorRect(leftX, topY, width, height, drawColor){
     canvasContext.fillStyle = drawColor;
@@ -58,13 +60,13 @@
     if(referenceArray[i] > patternMatch[4] ){
       colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[0])
     } else if(referenceArray[i] > patternMatch[3] ){
-      colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[1])
+      colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[4])
     } else if(referenceArray[i] > patternMatch[2] ){
       colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[2])
     } else if(referenceArray[i] > patternMatch[1] ){
       colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[3])
     } else {
-      colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[4])
+      colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[1])
     }
   }
 
