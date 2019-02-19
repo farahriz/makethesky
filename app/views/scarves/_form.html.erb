@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :city_id %>
-    <%= form.select(:city_id, options_from_collection_for_select(City.all, :id, :city_name)) %>
+    <%= form.select(:city_id, options_from_collection_for_select(City.all, :id, :city_name, @scarf.city_id.to_i)) %>
   </div>
 
 
@@ -34,7 +34,7 @@
 
   <div class="field">
     <%= form.label :weather_insp %>
-    <%= form.select(:weather_insp, options_for_select([['Temperature', 'temperature'], ['Humidity', 'humidity'], ['Dew Point', 'dewPoint'], ['Apparent Temperature','apparentTemperature'], ['Wind Speed', 'windSpeed'], ['Cloud Cover', 'cloudCover'], ['Visibility', 'visibility'], ['Summary', 'summary']])) %>
+    <%= form.select(:weather_insp, options_for_select([['Temperature', 'temperature'], ['Humidity', 'humidity'], ['Dew Point', 'dewPoint'], ['Apparent Temperature','apparentTemperature'], ['Wind Speed', 'windSpeed'], ['Cloud Cover', 'cloudCover'], ['Visibility', 'visibility'], ['Summary', 'summary']], [@scarf.weather_insp])) %>
   </div>
 
 

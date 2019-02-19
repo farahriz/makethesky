@@ -61,6 +61,22 @@ class ScarvesController < ApplicationController
   def update
     respond_to do |format|
       if @scarf.update(scarf_params)
+
+        unixtime = @scarf.date_insp.to_time.to_i
+        glat = @scarf.city.lat
+        glng = @scarf.city.lng
+
+        response = HTTParty.get("https://api.darksky.net/forecast/#{ENV['DARK_SKY_SECRET']}/#{glat},#{glng},#{unixtime}?exclude=currently,flags")
+
+        rawpattern = []
+
+        #parse resonse to make pattern
+        response['hourly']['data'].each do |hour|\
+          str = scarf_params['weather_insp']
+          rawpattern << hour["#{str}"]
+        end        
+
+        @scarf.update(pattern: rawpattern)
         format.html { redirect_to @scarf, notice: 'Scarf was successfully updated.' }
         format.json { render :show, status: :ok, location: @scarf }
       else
