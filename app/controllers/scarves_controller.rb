@@ -29,7 +29,7 @@ class ScarvesController < ApplicationController
   # POST /scarves.json
   def create
     @scarf = Scarf.new(scarf_params)
-
+    @scarf.user = current_user
     unixtime = @scarf.date_insp.to_time.to_i
     glat = @scarf.city.lat
     glng = @scarf.city.lng
