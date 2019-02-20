@@ -39,6 +39,71 @@
     <canvas id="scarfCanvas" width="720" height="120"></canvas>
   </div>
 
+<% if current_user == @scarf.user %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 border border-danger rounded">
+      <h5>Customise colour scheme</h5>
+      <form id="pallete-maker" class="border border-secondary rounded">
+        <div class="form-group ">
+          <label for="baseColor" class="col-sm-3 col-form-label">Select a main colour:</label>
+          <input type="color" name="baseColor" value="#29339B" id="baseColor">
+          <button id="gen-random-col">Get random color</button>
+        </div>
+        <div class="form-group">
+          <label for="palleteNum" class="col-sm-3">Select number of colours:</label>
+          <div class="text-center font-weight-bold" id="display-pallete-num"></div>
+          <input type="range" name="palleteNum" min="3" max="8" value="5" class="slider" id="palleteNum">
+        </div>
+        <div class="form-inline">
+          <label for="schemeType" class="col-sm-3">Select colour scheme type:</label>
+          <select class="form-control" id="schemeType">
+            <option value="monochrome">Monochrome</option>
+            <option value="monochrome-dark">Dark monochrome</option>
+            <option value="monochrome-light">Light monochrome</option>
+            <option value="analogic">Analogic</option>
+            <option value="complement">Complementary</option>
+            <option value="analogic-complement">Analogic-complementary</option>
+            <option value="triad">Triad</option>
+            <option value="quad">Quad</option>
+          </select>
+        </div>            
+        <button type="submit" class="btn btn-secondary">Get colour scheme</button>
+      </form>
+    </div>
+
+    <div class="col-sm-6 border border-secondary rounded">
+      <h5>Preview colour scheme</h5>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+<script>
+  var slider = document.getElementById("palleteNum");
+  var output = document.getElementById("display-pallete-num");
+  output.innerHTML = slider.value;
+
+  slider.oninput = function() {
+    output.innerHTML = this.value;
+  }
+
+  function getRandomHex() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  $('#gen-random-col').click(function(){
+    event.preventDefault();
+    $('#baseColor').val(getRandomHex())
+  })
+
+</script>
 
 <script>
   var canvas = document.getElementById('scarfCanvas');
@@ -46,7 +111,6 @@
 
   let referenceArray = $('#refPat').html().slice(1,-1).replace(/"/g, "").split(',')
 
-  // let referenceArray = ["20.66", "18.31", "19.71", "23.06", "23.12", "18.43", "24.46", "21.06", "19.76", "25.68", "23.69", "22.2", "21.95", "20.3", "23.57", "22.36", "21.15", "21.09", "22.18", "18.46", "19.74", "17.35", "15.23", "16.36"]
   let highRef = Math.max(...referenceArray);
   let lowRef = Math.min(...referenceArray);
   let range = highRef - lowRef
