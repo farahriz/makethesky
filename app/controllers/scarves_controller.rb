@@ -32,7 +32,7 @@ class ScarvesController < ApplicationController
     end
 
 
-    # return redirect_to scarf_path(Scarf.find(4)), notice: "Congrats. You hit the scheme route."
+    # return redirect_to scarf_path(Scarf.find(4)), notice: "#{base_color}"
   end
 
   # GET /scarves/1/edit
