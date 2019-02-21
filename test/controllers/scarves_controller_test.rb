@@ -17,7 +17,7 @@ class ScarvesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create scarf" do
     assert_difference('Scarf.count') do
-      post scarves_url, params: { scarf: { city_insp: @scarf.city_insp, date_insp: @scarf.date_insp, description: @scarf.description, pattern: @scarf.pattern, title: @scarf.title } }
+      post scarves_url, params: { scarf: { city_id: @scarf.city_id, date_insp: @scarf.date_insp, description: @scarf.description, pattern: @scarf.pattern, title: @scarf.title } }
     end
 
     assert_redirected_to scarf_url(Scarf.last)
@@ -34,7 +34,7 @@ class ScarvesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update scarf" do
-    patch scarf_url(@scarf), params: { scarf: { city_insp: @scarf.city_insp, date_insp: @scarf.date_insp, description: @scarf.description, pattern: @scarf.pattern, title: @scarf.title } }
+    patch scarf_url(@scarf), params: { scarf: { city_id: @scarf.city_id, date_insp: @scarf.date_insp, description: @scarf.description, pattern: @scarf.pattern, title: @scarf.title } }
     assert_redirected_to scarf_url(@scarf)
   end
 
