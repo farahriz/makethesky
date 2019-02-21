@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :scarves
 
+  # get 'scheme', to: 'scarves#scheme', as: 'scheme'
+
   root "landing#index"
 
   get 'patterns/new'

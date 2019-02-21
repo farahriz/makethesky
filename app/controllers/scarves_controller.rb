@@ -1,5 +1,5 @@
 class ScarvesController < ApplicationController
-  before_action :set_scarf, only: [:show, :edit, :update, :destroy]
+  before_action :set_scarf, only: [:show, :edit, :update, :destroy, :scheme]
 
   # GET /scarves
   # GET /scarves.json
@@ -16,6 +16,10 @@ class ScarvesController < ApplicationController
   # GET /scarves/new
   def new
     @scarf = Scarf.new
+  end
+
+  def scheme
+    return redirect_to scarf_path(@scarf), notice: "Congrats. You hit the scheme route"
   end
 
   # GET /scarves/1/edit
@@ -55,9 +59,9 @@ class ScarvesController < ApplicationController
         format.json { render json: @scarf.errors, status: :unprocessable_entity }
       end
     end
-
-
   end
+
+
 
   # PATCH/PUT /scarves/1
   # PATCH/PUT /scarves/1.json
