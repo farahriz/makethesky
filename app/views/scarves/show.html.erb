@@ -44,36 +44,14 @@
   <div class="row">
     <div class="col-sm-6 border border-danger rounded">
       <h5>Customise colour scheme</h5>
-      <form action="/scarves/scheme" method="post" id="pallete-maker" class="border border-secondary rounded">
-        <div class="form-group ">
-          <label for="baseColor" class="col-sm-4 col-form-label">Select a main colour:</label>
-          <input type="color" name="baseColor" value="#29339B" id="baseColor">
-          <button id="gen-random-col">Get random color</button>
-        </div>
-        <div class="form-group">
-          <label for="palleteNum" class="col-sm-4">Select number of colours:</label>
-          <div class="text-center font-weight-bold" id="display-pallete-num"></div>
-          <input type="range" name="palleteNum" min="3" max="8" value="5" class="slider" id="palleteNum">
-        </div>
-        <div class="form-inline">
-          <label for="schemeType" class="col-sm-4">Select colour scheme type:</label>
-          <select class="form-control" id="schemeType">
-            <option value="monochrome">Monochrome</option>
-            <option value="monochrome-dark">Dark monochrome</option>
-            <option value="monochrome-light">Light monochrome</option>
-            <option value="analogic">Analogic</option>
-            <option value="complement">Complementary</option>
-            <option value="analogic-complement">Analogic-complementary</option>
-            <option value="triad">Triad</option>
-            <option value="quad">Quad</option>
-          </select>
-        </div>            
-        <button type="submit" class="btn btn-secondary">Get colour scheme</button>
-      </form>
+      <%= render 'colselect', scarf: @scarf %>
     </div>
 
     <div class="col-sm-6 border border-secondary rounded">
       <h5>Preview colour scheme</h5>
+      <div id="color-pallete-preview">
+
+      </div>
     </div>
   </div>
 </div>
@@ -105,44 +83,62 @@
 
   $('#pallete-maker').submit(function(){
     event.preventDefault();
-    console.log($('#baseColor').val())
-    console.log($('#schemeType').val())
-    console.log($('#palleteNum').val())
+    $.ajax({
+      method: "POST", // Set request type
+      url: "https://localhost:3000/scarves/scheme", // Set URL for AJAX to point to
+      // data: {"key_name": "value"} // Specify data to post
+    }) 
+    .done(function(response) {
+      // 2. What to do after receiving a response from the server
+      console.log($('#baseColor').val())
+      console.log($('#schemeType').val())
+      console.log($('#palleteNum').val())
+    })
+
+
+
   });
 
 </script>
 
 <script>
-  var canvas = document.getElementById('scarfCanvas');
-  var canvasContext = canvas.getContext('2d');
+  function drawAll(){
+    let canvas = document.getElementById('scarfCanvas');
+    let canvasContext = canvas.getContext('2d');
 
-  let referenceArray = $('#refPat').html().slice(1,-1).replace(/"/g, "").split(',')
+    let referenceArray = $('#refPat').html().slice(1,-1).replace(/"/g, "").split(',')
 
-  let highRef = Math.max(...referenceArray);
-  let lowRef = Math.min(...referenceArray);
-  let range = highRef - lowRef
-  let patternMatch = [lowRef, lowRef + range/5, lowRef + 2*range/5, lowRef + 3*range/5, highRef]
+    let highRef = Math.max(...referenceArray);
+    let lowRef = Math.min(...referenceArray);
+    let range = highRef - lowRef
+    let patternMatch = [lowRef, lowRef + range/5, lowRef + 2*range/5, lowRef + 3*range/5, highRef]
 
-  let colorPallete = ['#29339B', '#74A4BC', '#B6D6CC', '#F1FEC6', '#FF3A20']
+    let colorPallete = ['#29339B', '#74A4BC', '#B6D6CC', '#F1FEC6', '#FF3A20']
 
-  function colorRect(leftX, topY, width, height, drawColor){
-    canvasContext.fillStyle = drawColor;
-    canvasContext.fillRect(leftX, topY, width, height);
-  }
+    function colorRect(leftX, topY, width, height, drawColor){
+      canvasContext.fillStyle = drawColor;
+      canvasContext.fillRect(leftX, topY, width, height);
+      }
 
-  for (var i = 0 ; i < 24; i++) {
-    if(referenceArray[i] > patternMatch[4] ){
-      colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[0])
-    } else if(referenceArray[i] > patternMatch[3] ){
-      colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[4])
-    } else if(referenceArray[i] > patternMatch[2] ){
-      colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[2])
-    } else if(referenceArray[i] > patternMatch[1] ){
-      colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[3])
-    } else {
-      colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[1])
-    }
-  }
+      for (var i = 0 ; i < 24; i++) {
+        if(referenceArray[i] > patternMatch[4] ){
+          colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[0])
+        } else if(referenceArray[i] > patternMatch[3] ){
+          colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[4])
+        } else if(referenceArray[i] > patternMatch[2] ){
+          colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[2])
+        } else if(referenceArray[i] > patternMatch[1] ){
+          colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[3])
+        } else {
+          colorRect(i * canvas.width/24, 0,canvas.width/24,canvas.height, colorPallete[1])
+        }
+      }
+
+  };
+
+  $(document).ready(function(){
+    drawAll();
+  })
 
 </script>
 

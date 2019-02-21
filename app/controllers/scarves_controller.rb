@@ -1,5 +1,5 @@
 class ScarvesController < ApplicationController
-  before_action :set_scarf, only: [:show, :edit, :update, :destroy, :scheme]
+  before_action :set_scarf, only: [:show, :edit, :update, :destroy]
 
   # GET /scarves
   # GET /scarves.json
@@ -19,7 +19,20 @@ class ScarvesController < ApplicationController
   end
 
   def scheme
-    return redirect_to scarf_path(@scarf), notice: "Congrats. You hit the scheme route"
+    base_color = params['baseColor'][1..-1]
+    pallete_num = params['palleteNum']
+    scheme_type = params['schemeType']
+
+    response = HTTParty.get("http://thecolorapi.com/scheme?hex=#{base_color}&mode=#{scheme_type}&count=#{pallete_num}")
+    scheme_cols = response['colors']
+
+    respond_to do |format|
+        format.html { redirect_to scarf_path(Scarf.find(4)), notice: "Here's your new colours" }
+        format.json { render json: response}
+    end
+
+
+    # return redirect_to scarf_path(Scarf.find(4)), notice: "#{base_color}"
   end
 
   # GET /scarves/1/edit
