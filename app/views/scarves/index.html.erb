@@ -2,6 +2,13 @@
 
 <h1>Scarves</h1>
 
+<div id="search-scarves-display" class="m-3">
+  <h5>Search scarves</h5>
+  <%= form_with model: @scarf, method: :get, local: true do |form| %>
+      <%= render partial: 'search', locals: {form: form} %>
+  <% end %>
+</div>
+
 <table id="all-scarves">
   <thead>
     <tr>

@@ -8,6 +8,8 @@ ruby '2.5.3'
 gem 'figaro'
 gem 'bcrypt'
 
+# For searching
+gem 'pg_search'
 
 # Talk to some apis
 gem 'httparty'
