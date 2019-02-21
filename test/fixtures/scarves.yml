@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  description: MyString
-  city_insp: MyString
-  date_insp: 2019-02-18 11:14:45
-  pattern: MyText
+# one:
+#   title: MyString
+#   description: MyString
+#   city_id: MyString
+#   date_insp: 2019-02-18 11:14:45
+#   weather_insp: MyString
+#   pattern: MyText
 
-two:
-  title: MyString
-  description: MyString
-  city_insp: MyString
-  date_insp: 2019-02-18 11:14:45
-  pattern: MyText
+# two:
+#   title: MyString
+#   description: MyString
+#   city_id: MyString
+#   date_insp: 2019-02-18 11:14:45
+#   weather_insp: MyString
+#   pattern: MyText
