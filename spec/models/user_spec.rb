@@ -28,7 +28,6 @@ RSpec.describe User, type: :model do
 
   end
 
-
   context 'association tests' do
     it 'should have many scarves' do
        expect(User.reflect_on_association(:scarves).macro).to eq(:has_many)

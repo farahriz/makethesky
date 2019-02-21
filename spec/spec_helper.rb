@@ -5,7 +5,6 @@
 # files.
 
 # ENV["RAILS_ENV"] ||= 'test'
-require 'capybara/rspec'
 #
 # Given that it is always loaded, you are encouraged to keep this file as
 # light-weight as possible. Requiring heavyweight dependencies from this file
