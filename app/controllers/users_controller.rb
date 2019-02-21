@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @scarves = Scarf.where(user_id: params[:id])
   end
 
   # GET /users/new
@@ -19,6 +20,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if not_allowed?
+      return redirect_to user_path(@user), notice: "Whoa there! You can't edit someone else's profile!"
+    end
   end
 
   # POST /users
@@ -54,6 +58,10 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+
+    if not_allowed?
+      return redirect_to users_path, notice: "Whoa there! You can't edit delete someone else's account!"
+    end
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
@@ -78,6 +86,10 @@ class UsersController < ApplicationController
       else 
         return true
       end
+    end
+
+    def not_allowed?
+      current_user == nil or !(@user == current_user)
     end
 
 end

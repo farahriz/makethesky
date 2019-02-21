@@ -1,0 +1,12 @@
+<tr>
+    <td><%= link_to "#{scarf.title}", scarf %></td>
+    <td><%= scarf.description %></td>
+    <td><%= scarf.city.city_name %></td>
+    <td><%= scarf.date_insp.strftime("%d %b %Y") %></td>
+    <td><%= scarf.weather_insp %></td>
+    <td><canvas id=<%= "scarf-canvas-#{scarf.id}"%> width="240" height="15"></canvas></td>
+    <%if scarf.user == current_user %>
+	    <td><%= link_to 'Edit', edit_scarf_path(scarf) %></td>
+	    <td><%= link_to 'Destroy', scarf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<% end %>
+</tr>
