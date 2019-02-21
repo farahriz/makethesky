@@ -45,7 +45,10 @@ RSpec.describe Scarf, type: :model do
       expect(scarf.has_changed?).to be(false)
     end
 
-    it 'should say an updated scarf has been changed ' do
+    it 'should say an updated scarf has been changed' do
+      scarf.update(description: "Laura Ipsome")
+      expect(scarf.has_changed?).to be(true)      
+
     end
 
   end
