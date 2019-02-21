@@ -4,7 +4,7 @@ class ScarvesController < ApplicationController
   # GET /scarves
   # GET /scarves.json
   def index
-    @scarves = Scarf.all
+    @scarves = Scarf.all.order("updated_at DESC")
   end
 
   # GET /scarves/1

@@ -30,9 +30,9 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/scarves">View latest scarves</a>
+            <a class="nav-link" href="/scarves">View all scarves</a>
           </li>
-          <% if !current_user == nil %>          
+          <% if !(current_user == nil) %>          
           <li class="nav-item">
             <a class="nav-link" href="/myscarves">My scarves</a>
           </li>

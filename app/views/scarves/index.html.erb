@@ -7,9 +7,9 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>City insp</th>
-      <th>Date insp</th>
-      <th>Weather insp</th>
+      <th>City inspiration</th>
+      <th>Date inspiration</th>
+      <th>Weather inspiration</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,7 +22,9 @@
 <br>
 
 <div id="new-scarf">
-  <%= link_to 'New Scarf', new_scarf_path, remote: true %>  
+  <%if !(current_user == nil)%>
+    <%= link_to 'New Scarf', new_scarf_path, remote: true %>  
+  <% end %>
 </div>
 
 
