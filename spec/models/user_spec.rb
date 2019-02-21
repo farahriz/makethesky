@@ -26,13 +26,13 @@ RSpec.describe User, type: :model do
        expect{ User.create!( email: 'keysmashasldkskj', password: 'qwerty') }.to raise_error('Validation failed: Email is invalid')
      end
 
+  end
+
+
+  context 'association tests' do
     it 'should have many scarves' do
        expect(User.reflect_on_association(:scarves).macro).to eq(:has_many)
     end
-
-  end
-
-  context 'scope tests' do
   end
 
 end
