@@ -15,13 +15,13 @@ For ease of reference to the good folks at NEXT Academy, here's rundown of the r
 2. Concept of roles and proper authorisation
 
    * Users can only edit and delete their own scarves.
-   * (Pending) There are two kinds of users: superadmins and users. Superadmins have the power to edit and delete everyone's scarves. Normal users are limited to thier own scarves.
+   * There are two kinds of users: superadmins and users. Superadmins have the power to edit and delete everyone's scarves. Normal users are limited to thier own scarves.*
 
 3. Search functionality
 
-   * (Pending) Search functionality is implemented using the [pg_search](https://github.com/Casecommons/pg_search) gem. 
-   * (Pending) Users can search through scarves. 
-   * (Pending) There is an autocomplete on the 'City' input of creating a new scarf, that allows the user to type in a city and get suggestions based on cities already in the database.
+   * Users can search through scarves. This is implemented through a custom scope.
+   * *(Pending) Search functionality is implemented using the [pg_search](https://github.com/Casecommons/pg_search) gem.* 
+   * *(Pending) There is an autocomplete on the 'City' input of creating a new scarf, that allows the user to type in a city and get suggestions based on cities already in the database.*
 
 4. API integration
 
@@ -29,9 +29,9 @@ For ease of reference to the good folks at NEXT Academy, here's rundown of the r
 
 5. AJAX implementation
 
-   Users can create a new scarf and have that scarf appear on the scarf index without the page refreshing.
-   (Pending) A user can submit a form to generate a color scheme by querying [The Color API](http://www.thecolorapi.com/)
-   (Pending) A user can change the color palette of their scarf's stripes (without the page refreshing)
+   * Users can create a new scarf and have that scarf appear on the scarf index without the page refreshing.
+   * *(Pending) A user can submit a form to generate a color scheme by querying [The Color API](http://www.thecolorapi.com/)*
+   * *(Pending) A user can change the color palette of their scarf's stripes (without the page refreshing)*
 
 6. RSpec tests for the application
    * Model validation and association test (for e.g. uniqueness, presence, numericality). 
@@ -39,7 +39,7 @@ For ease of reference to the good folks at NEXT Academy, here's rundown of the r
    * At least 1 integration spec using the Capybara library.
 
 7. Deployment to Heroku
-   (Pending) Please find it over at (placeholder text)
+   * *(Pending) Please find it over at (placeholder text)*
 
 
 ***
