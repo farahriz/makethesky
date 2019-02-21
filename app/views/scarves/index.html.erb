@@ -2,7 +2,7 @@
 
 <h1>Scarves</h1>
 
-<table>
+<table id="all-scarves">
   <thead>
     <tr>
       <th>Title</th>
@@ -15,21 +15,14 @@
   </thead>
 
   <tbody>
-    <% @scarves.each do |scarf| %>
-      <tr>
-        <td><%= scarf.title %></td>
-        <td><%= scarf.description %></td>
-        <td><%= scarf.city.city_name %></td>
-        <td><%= scarf.date_insp %></td>
-        <td><%= scarf.weather_insp %></td>
-        <td><%= link_to 'Show', scarf %></td>
-        <td><%= link_to 'Edit', edit_scarf_path(scarf) %></td>
-        <td><%= link_to 'Destroy', scarf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <%= render partial: 'scarf', collection: @scarves %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Scarf', new_scarf_path %>
+<div id="new-scarf">
+  <%= link_to 'New Scarf', new_scarf_path, remote: true %>  
+</div>
+
+

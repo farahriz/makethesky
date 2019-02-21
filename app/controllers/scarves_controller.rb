@@ -65,6 +65,7 @@ class ScarvesController < ApplicationController
 
     respond_to do |format|
       if @scarf.save
+        format.js   {  }
         format.html { redirect_to @scarf, notice: 'Scarf was successfully created.' }
         format.json { render :show, status: :created, location: @scarf }
       else

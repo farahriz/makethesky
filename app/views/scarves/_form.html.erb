@@ -1,4 +1,4 @@
-<%= form_with(model: scarf, local: true) do |form| %>
+<%= form_with(model: scarf) do |form| %>
   <% if scarf.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(scarf.errors.count, "error") %> prohibited this scarf from being saved:</h2>
