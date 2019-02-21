@@ -23,9 +23,16 @@ class ScarvesController < ApplicationController
     pallete_num = params['palleteNum']
     scheme_type = params['schemeType']
 
-    response = HTTParty.get('http://thecolorapi.com/scheme?hex=#{base_color}&format=json&mode=#{scheme_type}&count=#{pallete_num}')
+    response = HTTParty.get("http://thecolorapi.com/scheme?hex=#{base_color}&mode=#{scheme_type}&count=#{pallete_num}")
+    scheme_cols = response['colors']
 
-    return redirect_to scarf_path(Scarf.find(4)), notice: "Congrats. You hit the scheme route."
+    respond_to do |format|
+        format.html { redirect_to scarf_path(Scarf.find(4)), notice: "Here's your new colours" }
+        format.json { render json: response}
+    end
+
+
+    # return redirect_to scarf_path(Scarf.find(4)), notice: "Congrats. You hit the scheme route."
   end
 
   # GET /scarves/1/edit
