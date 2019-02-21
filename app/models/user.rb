@@ -1,8 +1,11 @@
 class User < ApplicationRecord
-  has_secure_password
+  has_secure_password(validations: false)
+
+  enum role: [ :superadmin, :standard ]
+
   has_many :scarves, dependent: :destroy
 
-  validates :password, presence: true
+  validates :password_digest, presence: true
   validates :email, presence: true, uniqueness: true
   validates :email, format: {with: /@.+\...+/}
   
