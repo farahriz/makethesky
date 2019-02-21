@@ -5,6 +5,10 @@ class ScarvesController < ApplicationController
   # GET /scarves.json
   def index
     @scarves = Scarf.all.order("updated_at DESC")
+
+    @scarves = @scarves.scarf_name(params[:scarf_name].strip) if params[:scarf_name].present?
+    @scarves = @scarves.descrip(params[:description].strip) if params[:description].present?
+
   end
 
   # GET /scarves/1
