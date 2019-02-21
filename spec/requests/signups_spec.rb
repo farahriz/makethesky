@@ -5,7 +5,7 @@ RSpec.describe "sign up process", type: :request do
 
     it "signs up a new user" do
       visit '/signup'
-      within("form") do
+      within("form.sign-up-form") do
       	fill_in 'user[email]', with: 'example@morexample.com'
       	fill_in 'user[password]', with: 'asdsasdad'
       	fill_in 'user[password_confirmation]', with: 'asdsasdad'
