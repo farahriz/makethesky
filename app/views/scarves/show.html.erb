@@ -83,10 +83,13 @@
 
   $('#pallete-maker').submit(function(){
     event.preventDefault();
+    let form = $(this);
+    let url = form.attr('action');
+
     $.ajax({
       method: "POST", // Set request type
-      url: "https://localhost:3000/scarves/scheme", // Set URL for AJAX to point to
-      // data: {"key_name": "value"} // Specify data to post
+      url: url, // Set URL for AJAX to point to
+      data: {"pallete_num": "H1"}
     }) 
     .done(function(response) {
       // 2. What to do after receiving a response from the server
