@@ -15,7 +15,7 @@ For ease of reference to the good folks at NEXT Academy, here's rundown of the r
 2. Concept of roles and proper authorisation
 
    * Users can only edit and delete their own scarves.
-   * There are two kinds of users: superadmins and users. Superadmins have the power to edit and delete everyone's scarves. Normal users are limited to thier own scarves.*
+   * There are two kinds of users: superadmins and standard users. Superadmins have the power to edit and delete everyone's scarves. Normal users are limited to thier own scarves.*
 
 3. Search functionality
 
@@ -37,33 +37,8 @@ For ease of reference to the good folks at NEXT Academy, here's rundown of the r
    * Model validation and association test (for e.g. uniqueness, presence, numericality). 
    * At least 2 model specs, testing any custom model methods (test for happy and edgy paths) (not including the test made above). 
    * At least 1 integration spec using the Capybara library.
+   
+   * **All of the above can be found as spec files :,) **
 
 7. Deployment to Heroku
-   * *(Pending) Please find it over at (placeholder text)*
-
-
-***
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+   * Look up to find the link.
