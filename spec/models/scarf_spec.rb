@@ -29,8 +29,23 @@ RSpec.describe Scarf, type: :model do
 
   context "association tests" do
 
-  	it 'should belong to user' do
+    it 'should belong to user' do
       expect(Scarf.reflect_on_association(:user).macro).to eq(:belongs_to)
+    end
+
+  end
+
+
+  context "custom model class method tests" do
+    user = User.first
+    city = City.first
+    let(:scarf) { Scarf.create!(user_id: user.id, description: 'Lorem Ipsum', city_id: city.id, date_insp: Date.today, title: 'Lorem Ipsrum', weather_insp: 'humidity') }
+
+    it 'should say a scarf that was just created has not been changed' do
+      expect(scarf.has_changed?).to be(false)
+    end
+
+    it 'should say an updated scarf has been changed ' do
     end
 
   end
