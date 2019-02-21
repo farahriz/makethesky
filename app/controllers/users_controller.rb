@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @scarves = Scarf.where(user_id: params[:id])
   end
 
   # GET /users/new

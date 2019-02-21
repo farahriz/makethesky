@@ -7,3 +7,21 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+<table id="all-scarves">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>City inspiration</th>
+      <th>Date inspiration</th>
+      <th>Weather inspiration</th>
+      <th>Preview</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render partial: 'scarf', collection: @scarves %>
+  </tbody>
+</table>
