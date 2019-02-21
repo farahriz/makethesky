@@ -139,7 +139,7 @@ class ScarvesController < ApplicationController
     end
 
     def not_allowed?
-      current_user == nil or !(@scarf.user == current_user)
+      current_user == nil or !(current_user.superadmin? or @scarf.user == current_user)
     end
 
 end
