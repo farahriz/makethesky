@@ -19,6 +19,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if not_allowed?
+      return redirect_to user_path(@user), notice: "Whoa there! You can't edit someone else's profile!"
+    end
   end
 
   # POST /users
@@ -78,6 +81,10 @@ class UsersController < ApplicationController
       else 
         return true
       end
+    end
+
+    def not_allowed?
+      current_user == nil or !(@user == current_user)
     end
 
 end

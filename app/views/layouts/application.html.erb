@@ -36,10 +36,14 @@
           <li class="nav-item">
             <a class="nav-link" href="/myscarves">My scarves</a>
           </li>
-          <% end %>
           <li class="nav-item">
             <a class="nav-link" href="/scarves/new">Make a scarf</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href=<%= edit_user_path(current_user) %>>Edit profile</a>
+          </li>          
+          <% end %>
+
           <li class="nav-item">
           <% if current_user == nil %>
               <a class="nav-link" href="/signup">Sign Up</a>
@@ -50,9 +54,6 @@
           <% else %>
               <a class="nav-link" href="/logout">Log out</a>
           <% end %>
-          </li>
-          <li>
-            <div id=”notice”><%= notice %></p>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
